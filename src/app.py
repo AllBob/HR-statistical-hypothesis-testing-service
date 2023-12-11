@@ -143,8 +143,7 @@ if uploaded_file is not None:
                 st.plotly_chart(fig)
 
             st.subheader('Проверка, являются ли выборки распределенными нормально')
-            shapiro(data_aged, data_young)
-            if shapiro(data_male, data_female):
+            if shapiro(data_aged, data_young):
                 st.text("Для проверки гипотезы должна использоваться t-статистика, в разработке")
             else:
                 # проверка гипотезы 2: 
