@@ -22,13 +22,14 @@ def mannwhitgreater(data_1, data_2, alpha):
     stat_mw, p_value_mw = stats.mannwhitneyu(data_1, data_2, alternative='greater')
     st.text(f'Статистика Манна-Уитни={stat_mw :.3f}, p-value={p_value_mw:.3f}')
     if p_value_mw < alpha:
-        st.text(f'Отклоняем нулевую гипотезу о том, что выборки 1 и 2 не отличаются на уровне значимости {alpha}')
+        st.write(f'Отклоняем нулевую гипотезу о том, что выборки 1 и 2 не отличаются на уровне значимости {alpha}')
         st.text('Принимаем альтернативную одностороннюю гипотезу о том, среднее выборки 1 больше')
         result=1
         
     else:
-        st.text(f'Принимаем нулевую гипотезу о том, что выборки 1 и 2 не отличаются на уровне значимости {alpha}')
+        st.write(f'Принимаем нулевую гипотезу о том, что выборки 1 и 2 не отличаются на уровне значимости {alpha}')
         result=0
+    st.markdown( "<h3 style='text-left: center; color: red;'>Результат: </h3>", unsafe_allow_html=True)
     return result
         
 
@@ -101,12 +102,12 @@ if uploaded_file is not None:
             else:
                 # проверка гипотезы 1: мужчины пропускают в течение года более 2 рабочих дней по болезни значимо чаще женщин
                 st.subheader('Проверка гипотезы')
-                result=0
-                # Результат проверки
+                st.write(f"Гипотеза 1: Мужчины пропускают в течение года более {work_days} дней по болезни значимо чаще женщин.")
+                # Результат проверки гипотезы 1
                 if mannwhitgreater(data_male, data_female, alpha):
-                    st.markdown( "<h3 style='text-left: center; color: red;'>Гипотеза 1 подтверждена </h3>", unsafe_allow_html=True)
+                    st.write(f":white_check_mark: Гипотеза 1 (Мужчины пропускают в течение года более {work_days} дней по болезни значимо чаще женщин) подтверждена ")
                 else:
-                    st.markdown( "<h3 style='text-left: center; color: red;'>Гипотеза 1 не подтверждена </h3>", unsafe_allow_html=True)
+                    st.write(f":x: Гипотеза 1 (Мужчины пропускают в течение года более {work_days} дней по болезни значимо чаще женщин) НЕ подтверждена ")
             
     
    
@@ -149,8 +150,8 @@ if uploaded_file is not None:
                 # проверка гипотезы 2: 
                 st.subheader('Проверка гипотезы')
                 if mannwhitgreater(data_aged, data_young, alpha):
-                    st.markdown( "<h3 style='text-align: left; color: red;'>Гипотеза 2 подтверждена </h3>", unsafe_allow_html=True)
+                    st.write( f":white_check_mark: Гипотеза 2 (Работники старше {age} лет пропускают в течение года более {work_days} дней  по болезни по болезни значимо чаще своих более молодых коллег) подтверждена")
                 else:
-                    st.markdown( "<h3 style='text-align: left; color: red;'>Гипотеза 2 не подтверждена </h3>", unsafe_allow_html=True)
+                    st.write( f":x: Гипотеза 2 (Работники старше {age} лет пропускают в течение года более {work_days} дней  по болезни по болезни значимо чаще своих более молодых коллег) НЕ подтверждена")
 
         
