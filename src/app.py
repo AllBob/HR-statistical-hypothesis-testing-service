@@ -75,7 +75,7 @@ if uploaded_file is not None:
             st.markdown( "<h3 style='text-align: left; color: red;'>Объем выборки (выборок) недостаточен для проверки гипотезы </h3>", unsafe_allow_html=True)
         else:
             if (len(data_male)>=3 and len(data_male)<20) or (len(data_female)>=3 and len(data_male)<20):
-                st.write(':exclamation: Предупреждение: малый объем выборок может повлиять на корректность результата')
+                st.text(':exclamation: Предупреждение: малый объем выборок может повлиять на корректность результата')
             ## Графики распределений
             tab1, tab2, tab3 =st.tabs(["Гистограмма",  "Распределение мужчины", "Распределение женщины"])
             with tab1:
