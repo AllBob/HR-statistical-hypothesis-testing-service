@@ -126,7 +126,7 @@ if uploaded_file is not None:
             tab1, tab2, tab3 =st.tabs(["Гистограмма",  "Распределение старше порога", "Распределение моложе порога"])
 
             with tab1:
-                st.text("Распределение количества пропущенных рабочих дней среди сотрудников старше и младше порога возраста")
+                st.text("Распределение количества пропущенных рабочих дней среди сотрудников \nстарше и младше порога возраста")
                 chart_data = pd.DataFrame({"Старше возрастного порога": data_aged.value_counts(), "Более молодые": data_young.value_counts()})
                 st.bar_chart(chart_data, use_container_width=True)
 
