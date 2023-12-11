@@ -51,7 +51,7 @@ if uploaded_file is not None:
     maxage=df['age'].max()
 
 
-    # задание параметров age и work_days, ввод параметров
+    # задание параметров age и work_days
     work_days = st.slider("Выберите порог пропущенных рабочих дней", min_value=0, max_value=maxdays, value=2, step=1)
     age = st.slider("Выберите возрастной порог", min_value=minage, max_value=maxage, value=35, step=1)
     df = df[df['sick_days'] > work_days]
@@ -122,8 +122,8 @@ if uploaded_file is not None:
             st.markdown( "<h3 style='text-align: left; color: red;'>Объем выборки (выборок) недостаточен для проверки гипотезы </h3>", unsafe_allow_html=True)
         else:
             if (len(data_aged)>=3 and len(data_aged)<20) or (len(data_young)>=3 and len(data_young)<20):
-                st.text(":exclamation:Предупреждение: малый объем выборок может повлиять на корректность результата")
-            ## Графики распределений
+                st.text(":exclamation: Предупреждение: малый объем выборок может повлиять на корректность результата")
+            # Графики распределений
             tab1, tab2, tab3 =st.tabs(["Гистограмма",  "Распределение старше порога", "Распределение моложе порога"])
 
             with tab1:
